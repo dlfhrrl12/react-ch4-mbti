@@ -7,6 +7,7 @@ import TestPage from '../pages/TestPage';
 import TestResultPage from '../pages/TestResultPage';
 import Profile from '../pages/Profile';
 import ProtectedRoute from '../api/ProtectedRouter';
+import Result from '../components/Result';
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
           <Route element={<ProtectedRoute />}>
             <Route path="/testresult" element={<TestResultPage />} />
           </Route>
+          <Route path='/result' element={<Result />} />
         </Route>
       </Routes>
     </BrowserRouter>

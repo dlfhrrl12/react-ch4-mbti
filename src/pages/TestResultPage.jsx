@@ -1,7 +1,8 @@
-import React from 'react';
-
 const TestResultPage = () => {
-  return <div></div>;
-};
+  return (
+    <>
 
+    </>
+  );
+};
 export default TestResultPage;

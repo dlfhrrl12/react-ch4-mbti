@@ -32,9 +32,9 @@ const Profile = () => {
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     const token = localStorage.getItem("accessToken");
-  
+
     // 토큰이 없으면 로그인 페이지로 리디렉션
     if (!token) {
       setMessage("로그인 세션이 만료되었습니다. 다시 로그인 해주세요.");
@@ -43,7 +43,7 @@ const Profile = () => {
       setLoading(false);
       return;
     }
-  
+
     try {
       const response = await axios.patch(
         "https://www.nbcamp-react-auth.link/profile",  // 프로필 업데이트 경로
@@ -54,7 +54,7 @@ const Profile = () => {
           },
         }
       );
-  
+
       if (response.data.success) {
         setMessage('닉네임이 성공적으로 변경되었습니다.');
       } else {
@@ -92,7 +92,7 @@ const Profile = () => {
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
         />
-        <button 
+        <button
           className={`w-full p-3 rounded-lg text-white text-lg transition ${loading ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#FF5A5F] hover:text-[#FF5A5F] hover:bg-white'}`}
           onClick={handleUpdateProfile}
           disabled={loading} // 로딩 중에는 버튼 비활성화
