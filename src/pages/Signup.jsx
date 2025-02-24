@@ -8,17 +8,22 @@ const Signup = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate(); // 회원가입 성공 후 로그인 페이지로 이동
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // 로딩 상태 시작
+
     try {
       const userData = { id, password, nickname };
       await register(userData); // 회원가입 API 요청
       toast.success('회원가입 성공! 로그인해주세요.', toastConfig);
       navigate('/login'); // 회원가입 후 로그인 페이지로 이동
     } catch (error) {
-      toast.error(error || '회원가입에 실패했습니다.');
+      toast.error(error?.response?.data?.message || '회원가입에 실패했습니다.', toastConfig);
+    } finally {
+      setIsLoading(false); // 로딩 상태 종료
     }
   };
 
@@ -63,7 +68,7 @@ const Signup = () => {
             type="submit"
             className="w-full bg-[#FF5A5F] text-white py-3 rounded-lg hover:bg-gray-50 transition duration-300 hover:text-[#FF5A5F]"
           >
-            회원가입
+            {isLoading ? '회원가입 중...' : '회원가입'}
           </button>
         </form>
         <div className="mt-4 text-center">

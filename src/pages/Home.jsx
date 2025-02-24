@@ -1,13 +1,12 @@
 import { toast } from 'react-toastify';
 import { toastConfig } from '../styles/toastifyStyles';
 import { useNavigate } from 'react-router-dom';
-import useStore from '../zustand/useStore';
 
 const Home = () => {
-  const { isAuthenticated } = useStore();
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
   const handleTestPage = () => {
-    if (!isAuthenticated) {
+    if (!token) {
       toast.warning('로그인이 필요합니다!', toastConfig);
       setTimeout(() => {
         navigate('/login');
