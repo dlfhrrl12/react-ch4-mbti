@@ -50,10 +50,8 @@ export const calculateMBTI = (answers) => {
   });
 
   // 점수를 비교해 최종 MBTI 유형 계산
-  const result = `${scores.E >= scores.I ? 'E' : 'I'}${
-    scores.S >= scores.N ? 'S' : 'N'
-  }${scores.T >= scores.F ? 'T' : 'F'}${scores.J >= scores.P ? 'J' : 'P'}`;
-  console.log(scores);
+  const result = `${scores.E >= scores.I ? 'E' : 'I'}${scores.S >= scores.N ? 'S' : 'N'
+    }${scores.T >= scores.F ? 'T' : 'F'}${scores.J >= scores.P ? 'J' : 'P'}`;
   return result;
 };
 

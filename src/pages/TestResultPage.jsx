@@ -12,11 +12,11 @@ const TestResultPage = () => {
         if (Array.isArray(data) && data.length > 0) {
           setTestResults(data); // 데이터를 상태에 저장
         } else {
-          console.error('No test results found');
+          console.error('테스트 결과를 찾을 수 없습니다');
         }
       })
       .catch((error) => {
-        console.error('Error fetching test results:', error);
+        console.error(error);
       });
   }, []); // 컴포넌트가 마운트될 때 한 번만 실행
 
@@ -26,7 +26,7 @@ const TestResultPage = () => {
   }
 
   return (
-    <div className="w-full bg-white text-center flex flex-col p-5">
+    <div className="w-full bg-white items-center text-center flex flex-col p-5">
       <h1 className="font-bold text-3xl mt-5 mb-5">모든 테스트 결과</h1>
       {testResults.map((result) => {
         // MBTI 설명을 result에서 가져오기
@@ -35,7 +35,7 @@ const TestResultPage = () => {
         return (
           <div
             key={result.id}
-            className="bg-cyan-950 flex flex-col items-start p-5 rounded-lg shadow-lg mb-5 mt-5"
+            className="bg-cyan-950 flex flex-col w-7/12 items-start p-5 rounded-lg shadow-lg mb-5 mt-5"
           >
             <h2 className="text-white font-bold text-2xl mb-4">
               {result.nickname}
