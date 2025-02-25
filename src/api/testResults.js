@@ -21,9 +21,10 @@ export const createTestResult = async ({ userId, result, nickname }) => {
   }
 };
 
-export const getTestResultUserId = async (userId) => {
+// 모든 테스트 결과를 가져오는 함수
+export const getAllTestResults = async () => {
   try {
-    const response = await axios.get(`${API_URL}/testResults?userId=${userId}`);
+    const response = await axios.get(`${API_URL}/testResults`);
     return response.data;
   } catch (error) {
     console.error(error);
